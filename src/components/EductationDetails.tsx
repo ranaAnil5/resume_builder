@@ -120,10 +120,7 @@ const EducationalDetails = () => {
             </GridItem>
 
             <GridItem colSpan={2}>
-              <FormField
-                label="Personal Summary"
-                inputProps={{ display: "none" }}
-              />
+              <FormField label="Description" inputProps={{ display: "none" }} />
               <Textarea
                 w={"100%"}
                 h={"100px"}
