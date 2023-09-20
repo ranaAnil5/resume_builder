@@ -89,8 +89,8 @@ export const initalState = {
       description: "",
     },
   ],
-  skills: [],
-  hobbies: [],
+  skills: [{ name: "" }],
+  hobbies: [{ name: "" }],
 };
 
 export const initAppState: InitialStateType = {
