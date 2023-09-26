@@ -11,7 +11,7 @@ import {
 import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
-import { Experience as Exp } from "../Context/initialAppState";
+import { Experience as Exp } from "../App.type";
 import { RiDeleteBinLine } from "react-icons/ri";
 import AddOneMoreButton from "./AddOneMoreButton";
 

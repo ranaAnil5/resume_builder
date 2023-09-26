@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { InitialStateType } from "./initialAppState";
+import { InitialStateType } from "../App.type";
 
 const AppContext = createContext<InitialStateType>({} as InitialStateType);
 

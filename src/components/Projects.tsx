@@ -11,7 +11,7 @@ import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import AddOneMoreButton from "./AddOneMoreButton";
-import { Project } from "../Context/initialAppState";
+import { Project } from "../App.type";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 // const Projects = ({ num }: { num?: number }) => {
