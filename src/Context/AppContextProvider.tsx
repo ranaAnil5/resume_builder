@@ -7,10 +7,11 @@ import {
   PersonalDetail,
   Project,
   Skill,
-  initalState,
-} from "./initialAppState";
+} from "../App.type";
 import AppContext from "./AppContext";
-import { dummyAppState } from "./dummyAppState";
+
+import { initalState } from "../data/initialAppData";
+import { dummyAppState } from "../data/dummyAppData";
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [appState, setAppState] = useState<InitialState>(initalState);

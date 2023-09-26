@@ -1,4 +1,4 @@
-import { InitialState } from "./initialAppState";
+import { InitialState } from "../App.type";
 import img from "../assets/dummy_image.jpg";
 
 export const dummyAppState: InitialState = {

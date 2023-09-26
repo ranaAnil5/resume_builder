@@ -16,6 +16,7 @@ import AppContext from "../../Context/AppContext";
 import MainHeader from "./MainHeader";
 import SecondaryHeading from "./SecondaryHeading";
 import jsPDF from "jspdf";
+import { EducationalDetail, Experience, Hobbie, Skill } from "../../App.type";
 
 const Template1 = () => {
   const { personal_detail, educational_details, experiences, hobbies, skills } =
@@ -51,6 +52,8 @@ const Template1 = () => {
         columnGap={"10px"}
         rowGap={"40px"}
         ref={docRef}
+        border={"1px solid"}
+        p={"15px"}
       >
         <GridItem colSpan={12}>
           <HStack gap={"5"} alignItems={"center"}>
@@ -90,19 +93,21 @@ const Template1 = () => {
               {/* <MainHeader icon={<FaGraduationCap />} title="Education" /> */}
               <MainHeader title="Education" />
               <VStack gap={"20px"} alignItems={"start"}>
-                {educational_details.map((educational_detail, index) => (
-                  <Box px={"35px"} key={index}>
-                    <VStack alignItems={"start"} gap={"-5px"}>
-                      <Text fontWeight={"bold"} fontSize={"xl"}>
-                        {educational_detail.college_name}
-                      </Text>
-                      <Text color="grey">{educational_detail.duration}</Text>
-                      <Text color="grey">{educational_detail.degree}</Text>
-                      <Text>{educational_detail.location}</Text>
-                      <Text>{educational_detail.description}</Text>
-                    </VStack>
-                  </Box>
-                ))}
+                {educational_details.map(
+                  (educational_detail: EducationalDetail, index: number) => (
+                    <Box px={"35px"} key={index}>
+                      <VStack alignItems={"start"} gap={"-5px"}>
+                        <Text fontWeight={"bold"} fontSize={"xl"}>
+                          {educational_detail.college_name}
+                        </Text>
+                        <Text color="grey">{educational_detail.duration}</Text>
+                        <Text color="grey">{educational_detail.degree}</Text>
+                        <Text>{educational_detail.location}</Text>
+                        <Text>{educational_detail.description}</Text>
+                      </VStack>
+                    </Box>
+                  )
+                )}
               </VStack>
             </Box>
 
@@ -110,7 +115,7 @@ const Template1 = () => {
               {/* <MainHeader icon={<MdEngineering />} title="Experience" /> */}
               <MainHeader title="Experience" />
               <VStack gap={"20px"} px="35px" alignItems={"start"}>
-                {experiences.map((experience) => (
+                {experiences.map((experience: Experience) => (
                   <Box key={experience.employer}>
                     <Text fontWeight={"bold"} fontSize={"xl"}>
                       {experience.job_title + " at " + experience.employer}
@@ -139,7 +144,7 @@ const Template1 = () => {
 
             <VStack alignItems={"start"} gap={"-5px"}>
               <SecondaryHeading title="Skills" />
-              {skills.map((skill, index) => (
+              {skills.map((skill: Skill, index: number) => (
                 <Text key={index} pl={"10px"}>
                   {skill.name}
                 </Text>
@@ -148,7 +153,7 @@ const Template1 = () => {
 
             <VStack alignItems={"start"} gap={"-5px"}>
               <SecondaryHeading title="Hobbies" />
-              {hobbies.map((hobbie, index) => (
+              {hobbies.map((hobbie: Hobbie, index: number) => (
                 <Text key={index} pl={"10px"}>
                   {hobbie.name}
                 </Text>

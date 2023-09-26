@@ -2,6 +2,7 @@ import jsPDF from "jspdf";
 import { useContext, useRef } from "react";
 import AppContext from "../../Context/AppContext";
 import { Box, Button, Grid, GridItem, Text, VStack } from "@chakra-ui/react";
+import { EducationalDetail, Experience, Skill } from "../../App.type";
 
 const TemplateTwo = () => {
   const { personal_detail, educational_details, experiences, skills } =
@@ -105,7 +106,7 @@ const TemplateTwo = () => {
 
         <GridItem colSpan={7} rowSpan={3} pl="55px" pt="15px">
           <VStack gap={"20px"} alignItems={"start"}>
-            {experiences.map((experience) => (
+            {experiences.map((experience: Experience) => (
               <Box key={experience.employer} lineHeight={1.2}>
                 <Text fontWeight={"bold"} fontSize={"xl"}>
                   {experience.job_title + " at " + experience.employer}
@@ -119,7 +120,7 @@ const TemplateTwo = () => {
         </GridItem>
 
         <GridItem colSpan={5} bg="silver" h="165px" pl="35px" pt="15px">
-          {skills.map((skill, index) => (
+          {skills.map((skill: Skill, index: number) => (
             <Text key={index} color="teal">
               - {skill.name}
             </Text>
@@ -134,19 +135,21 @@ const TemplateTwo = () => {
           </VStack>
         </GridItem>
         <GridItem colSpan={5} bg="silver" py="10px" lineHeight={"1.2"}>
-          {educational_details.map((educational_detail, index) => (
-            <Box px={"35px"} key={index} mb="15px">
-              <VStack alignItems={"start"} gap={"-5px"}>
-                <Text fontWeight={"bold"} fontSize={"md"}>
-                  {educational_detail.college_name}
-                </Text>
-                <Text color="grey">{educational_detail.duration}</Text>
-                <Text color="grey">{educational_detail.degree}</Text>
-                <Text>{educational_detail.location}</Text>
-                {/* <Text>{educational_detail.description}</Text> */}
-              </VStack>
-            </Box>
-          ))}
+          {educational_details.map(
+            (educational_detail: EducationalDetail, index: number) => (
+              <Box px={"35px"} key={index} mb="15px">
+                <VStack alignItems={"start"} gap={"-5px"}>
+                  <Text fontWeight={"bold"} fontSize={"md"}>
+                    {educational_detail.college_name}
+                  </Text>
+                  <Text color="grey">{educational_detail.duration}</Text>
+                  <Text color="grey">{educational_detail.degree}</Text>
+                  <Text>{educational_detail.location}</Text>
+                  {/* <Text>{educational_detail.description}</Text> */}
+                </VStack>
+              </Box>
+            )
+          )}
         </GridItem>
       </Grid>
     </>
