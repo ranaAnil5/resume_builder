@@ -17,17 +17,18 @@ import {
 const steps = [
   { title: "Personal Info", description: "" },
   { title: "Educational Details", description: "" },
-  { title: "Experience", description: "" },
+  { title: "Experiences", description: "" },
+  { title: "Projects", description: "" },
   { title: "Skills", description: "" },
   { title: "Hobbies", description: "" },
 ];
 
 export function StepperNav() {
-  const { stepper, setStepper } = useContext(AppContext);
+  const { stepperIndex, setStepperIndex } = useContext(AppContext);
   // console.log(context);
 
   const { activeStep, setActiveStep } = useSteps({
-    index: stepper.index,
+    index: stepperIndex,
     count: steps.length,
   });
 
@@ -36,19 +37,18 @@ export function StepperNav() {
       size="lg"
       index={activeStep}
       mb={"30px"}
-      height="400px"
+      height="440px"
       orientation="vertical"
     >
       {steps.map((step, index) => (
-        <Step key={index}>
-          <StepIndicator
-            cursor={"pointer"}
-            onClick={() => {
-              setActiveStep(index);
-              setStepper({ index });
-            }}
-            userSelect={"none"}
-          >
+        <Step
+          key={index}
+          onClick={() => {
+            setActiveStep(index);
+            setStepperIndex(index);
+          }}
+        >
+          <StepIndicator cursor={"pointer"} userSelect={"none"}>
             <StepStatus
               complete={<StepIcon />}
               incomplete={<StepNumber />}
@@ -56,7 +56,7 @@ export function StepperNav() {
             />
           </StepIndicator>
 
-          <Box flexShrink="0" userSelect={"none"}>
+          <Box flexShrink="0" userSelect={"none"} cursor={"pointer"}>
             <StepTitle>{step.title}</StepTitle>
             <StepDescription>{step.description}</StepDescription>
           </Box>

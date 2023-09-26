@@ -43,6 +43,7 @@ const TemplateTwo = () => {
             </Text>
           </VStack>
         </GridItem>
+
         <GridItem colSpan={5} bg="teal" pl="35px">
           <VStack justifyContent={"center"} alignItems={"start"} h="100%">
             <Text fontSize={"2xl"} fontWeight={"semibold"} color="white">

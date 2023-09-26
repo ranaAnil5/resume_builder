@@ -65,7 +65,7 @@ const Experience = () => {
           </HStack>
           <Grid
             templateColumns={"repeat(2,1fr)"}
-            rowGap={"12"}
+            rowGap={"6"}
             columnGap={"12"}
             key={index}
             mb={"30px"}
@@ -85,7 +85,7 @@ const Experience = () => {
 
             <GridItem colSpan={1}>
               <FormField
-                label="Employer"
+                label="Employer / Company"
                 inputProps={{
                   name: "employer",
                   onChange: (e) => {

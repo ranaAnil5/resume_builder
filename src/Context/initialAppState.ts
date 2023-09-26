@@ -1,7 +1,3 @@
-export interface Stepper {
-  index: number;
-}
-
 export interface PersonalDetail {
   job_title: string;
   first_name: string;
@@ -30,6 +26,10 @@ export interface Experience {
   location: string;
   description: string;
 }
+export interface Project {
+  name: string;
+  description: string;
+}
 
 export interface Skill {
   name: string;
@@ -40,25 +40,30 @@ export interface Hobbie {
 }
 
 export interface InitialState {
-  stepper: Stepper;
   personal_detail: PersonalDetail;
   educational_details: EducationalDetail[];
   experiences: Experience[];
+  projects: Project[];
   skills: Skill[];
   hobbies: Hobbie[];
 }
 
 export interface InitialStateType extends InitialState {
-  setStepper: (stepper: Partial<Stepper>) => void;
+  dataToggler: boolean;
+  stepperIndex: number;
+  setStepperIndex: (index: number) => void;
   setPersonalDetail: (personalData: Partial<PersonalDetail>) => void;
   setEducationalDetails: (educationalData: EducationalDetail[]) => void;
   setExperiences: (experienceData: Experience[]) => void;
+  setProjects: (projectData: Project[]) => void;
   setSkills: (skill: Skill[]) => void;
   setHobbies: (hobbie: Hobbie[]) => void;
+  setDataToggler: () => void;
 }
 
+// -------------initial state of app---------------
+
 export const initalState = {
-  stepper: { index: 0 },
   personal_detail: {
     job_title: "",
     first_name: "",
@@ -89,16 +94,21 @@ export const initalState = {
       description: "",
     },
   ],
+  projects: [{ name: "", description: "" }],
   skills: [{ name: "" }],
   hobbies: [{ name: "" }],
 };
 
 export const initAppState: InitialStateType = {
   ...initalState,
-  setStepper: () => {},
+  dataToggler: true,
+  stepperIndex: 0,
+  setStepperIndex: () => {},
   setPersonalDetail: () => {},
   setEducationalDetails: () => {},
   setExperiences: () => {},
+  setProjects: () => {},
   setSkills: () => {},
   setHobbies: () => {},
+  setDataToggler: () => {},
 };

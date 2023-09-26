@@ -10,12 +10,10 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { BiSolidUserRectangle } from "react-icons/bi";
-
 import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import ImageClose from "./ImageClose";
-0;
 
 const PersonalDetails = () => {
   const { personal_detail, setPersonalDetail } = useContext(AppContext);
@@ -30,7 +28,7 @@ const PersonalDetails = () => {
   return (
     <>
       <Heading mb={"40px"}>Personal Detail :</Heading>
-      <Grid templateColumns={"repeat(2,1fr)"} rowGap={"12"} columnGap={"12"}>
+      <Grid templateColumns={"repeat(2,1fr)"} rowGap={"6"} columnGap={"12"}>
         <GridItem colSpan={1}>
           <FormField
             label="Wanted Job Title"

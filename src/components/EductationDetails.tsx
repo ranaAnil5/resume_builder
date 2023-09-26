@@ -70,7 +70,7 @@ const EducationalDetails = () => {
 
           <Grid
             templateColumns={"repeat(2,1fr)"}
-            rowGap={"12"}
+            rowGap={"6"}
             columnGap={"12"}
             key={index}
             mb={"30px"}

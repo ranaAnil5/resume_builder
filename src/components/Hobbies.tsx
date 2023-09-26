@@ -31,11 +31,11 @@ const Hobbies = () => {
   return (
     <>
       <Heading mb={"40px"}>Hobbies :</Heading>
-      <VStack gap={"12"} w={"50%"} alignItems={"start"}>
+      <VStack gap={"6"} w={"50%"} alignItems={"start"} mb="20px">
         {hobbies.map((hobbie, index) => (
           <FormField
             key={index}
-            rightAddon={<RiDeleteBinLine />}
+            rightAddon={<RiDeleteBinLine color="red" opacity="0.7" />}
             rightAddonClick={() => handleRemove(index)}
             inputProps={{
               name: "hobbie_name",
@@ -44,8 +44,8 @@ const Hobbies = () => {
             }}
           />
         ))}
-        <AddOneMoreButton handleAdd={handleAdd} />
       </VStack>
+      <AddOneMoreButton handleAdd={handleAdd} />
     </>
   );
 };

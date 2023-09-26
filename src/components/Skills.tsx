@@ -29,11 +29,11 @@ const Skills = () => {
   return (
     <>
       <Heading mb={"40px"}>Skills :</Heading>
-      <VStack gap={"12"} w={"50%"} alignItems={"start"}>
+      <VStack gap={"6"} w={"50%"} alignItems={"start"} mb="20px">
         {skills.map((skill, index) => (
           <FormField
             key={index}
-            rightAddon={<RiDeleteBinLine />}
+            rightAddon={<RiDeleteBinLine color="red" opacity="0.7" />}
             rightAddonClick={() => handleRemove(index)}
             inputProps={{
               name: "skill_name",
@@ -42,8 +42,8 @@ const Skills = () => {
             }}
           />
         ))}
-        <AddOneMoreButton handleAdd={handleAdd} />
       </VStack>
+      <AddOneMoreButton handleAdd={handleAdd} />
     </>
   );
 };

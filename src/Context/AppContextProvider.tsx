@@ -5,20 +5,24 @@ import {
   Hobbie,
   InitialState,
   PersonalDetail,
+  Project,
   Skill,
-  Stepper,
   initalState,
 } from "./initialAppState";
 import AppContext from "./AppContext";
+import { dummyAppState } from "./dummyAppState";
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [appState, setAppState] = useState<InitialState>(initalState);
+  const [appDataToggler, setAppDataToggler] = useState(true); //toggle for user and dummy data
+  const [stepper, setStepper] = useState(0);
 
-  const setStepper = (stepper: Partial<Stepper>) => {
-    setAppState((prev) => ({
-      ...prev,
-      stepper: { ...prev.stepper, ...stepper },
-    }));
+  const setDataToggler = () => {
+    setAppDataToggler(!appDataToggler);
+  };
+
+  const setStepperIndex = (stepperIndex: number) => {
+    setStepper(stepperIndex);
   };
 
   const setPersonalDetail = (personalData: Partial<PersonalDetail>) => {
@@ -42,6 +46,13 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
+  const setProjects = (projects: Project[]) => {
+    setAppState((prev) => ({
+      ...prev,
+      projects,
+    }));
+  };
+
   const setSkills = (skills: Skill[]) => {
     setAppState((prev) => ({
       ...prev,
@@ -58,15 +69,35 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider
-      value={{
-        ...appState,
-        setStepper,
-        setPersonalDetail,
-        setEducationalDetails,
-        setExperiences,
-        setSkills,
-        setHobbies,
-      }}
+      value={
+        appDataToggler
+          ? {
+              ...appState,
+              dataToggler: appDataToggler,
+              stepperIndex: stepper,
+              setStepperIndex,
+              setPersonalDetail,
+              setEducationalDetails,
+              setExperiences,
+              setProjects,
+              setSkills,
+              setHobbies,
+              setDataToggler,
+            }
+          : {
+              ...dummyAppState,
+              dataToggler: appDataToggler,
+              stepperIndex: stepper,
+              setStepperIndex,
+              setPersonalDetail,
+              setEducationalDetails,
+              setExperiences,
+              setProjects,
+              setSkills,
+              setHobbies,
+              setDataToggler,
+            }
+      }
     >
       {children}
     </AppContext.Provider>
