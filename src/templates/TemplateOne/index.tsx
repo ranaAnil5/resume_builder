@@ -1,7 +1,6 @@
 import { useContext, useRef } from "react";
 import {
   Box,
-  Button,
   Grid,
   GridItem,
   HStack,
@@ -17,6 +16,7 @@ import MainHeader from "./MainHeader";
 import SecondaryHeading from "./SecondaryHeading";
 import jsPDF from "jspdf";
 import { EducationalDetail, Experience, Hobbie, Skill } from "../../App.type";
+import DownloadButton from "../../components/DownloadButton";
 
 const Template1 = () => {
   const { personal_detail, educational_details, experiences, hobbies, skills } =
@@ -43,9 +43,7 @@ const Template1 = () => {
 
   return (
     <>
-      <Button mb={"30px"} onClick={handleDownload}>
-        Download PDF
-      </Button>
+      <DownloadButton handleDownload={handleDownload} />
 
       <Grid
         templateColumns="repeat(12,1fr)"

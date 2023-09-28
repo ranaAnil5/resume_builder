@@ -6,7 +6,7 @@ import {
   StepNumber,
   StepIcon,
   Step,
-  StepDescription,
+  // StepDescription,
   StepIndicator,
   StepSeparator,
   StepStatus,
@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 const steps = [
-  { title: "Personal Info", description: "" },
+  { title: "Personal Details", description: "" },
   { title: "Educational Details", description: "" },
   { title: "Experiences", description: "" },
   { title: "Projects", description: "" },
@@ -34,11 +34,12 @@ export function StepperNav() {
 
   return (
     <Stepper
+      height="440px"
+      mb={"30px"}
       size="lg"
       index={activeStep}
-      mb={"30px"}
-      height="440px"
       orientation="vertical"
+      gap={0}
     >
       {steps.map((step, index) => (
         <Step
@@ -58,7 +59,7 @@ export function StepperNav() {
 
           <Box flexShrink="0" userSelect={"none"} cursor={"pointer"}>
             <StepTitle>{step.title}</StepTitle>
-            <StepDescription>{step.description}</StepDescription>
+            {/* <StepDescription>{step.description}</StepDescription> */}
           </Box>
 
           <StepSeparator />

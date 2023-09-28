@@ -7,7 +7,6 @@ import {
   InputProps,
   InputRightAddon,
 } from "@chakra-ui/react";
-
 interface FormFieldProps {
   label?: string;
   type?: string;
@@ -31,9 +30,20 @@ const FormField = ({
         {label}
       </FormLabel>
       <InputGroup>
-        <Input type={type} {...inputProps} />
+        <Input
+          bg="white"
+          borderColor={"blackAlpha.400"}
+          type={type}
+          _focusVisible={{
+            borderColor: "brand.500",
+            boxShadow: " 0 0 0 1px teal",
+          }}
+          {...inputProps}
+        />
         {rightAddon && (
           <InputRightAddon
+            borderColor={"blackAlpha.400"}
+            bg={"brand.100"}
             cursor={"pointer"}
             children={rightAddon}
             onClick={rightAddonClick}

@@ -1,12 +1,4 @@
-import {
-  Heading,
-  HStack,
-  Grid,
-  GridItem,
-  Text,
-  Textarea,
-  Box,
-} from "@chakra-ui/react";
+import { HStack, Grid, GridItem, Text, Box } from "@chakra-ui/react";
 
 import FormField from "./FormField";
 import { useContext } from "react";
@@ -14,6 +6,8 @@ import AppContext from "../Context/AppContext";
 import { Experience as Exp } from "../App.type";
 import { RiDeleteBinLine } from "react-icons/ri";
 import AddOneMoreButton from "./AddOneMoreButton";
+import FormTextArea from "./FormTextArea";
+import ScreenHeader from "./ScreenHeader";
 
 const Experience = () => {
   const { experiences, setExperiences } = useContext(AppContext);
@@ -42,7 +36,7 @@ const Experience = () => {
 
   return (
     <>
-      <Heading mb={"40px"}>Experience :</Heading>
+      <ScreenHeader title="Experiences" />
 
       {experiences.map((experience, index) => (
         <Box key={index}>
@@ -123,16 +117,12 @@ const Experience = () => {
             </GridItem>
 
             <GridItem colSpan={2}>
-              <FormField label="Description" inputProps={{ display: "none" }} />
-              <Textarea
-                w={"100%"}
-                h={"100px"}
-                p={"15px"}
-                name="description"
-                onChange={(e) => {
-                  handleChange(e, index);
+              <FormTextArea
+                label="Description"
+                textAreaProps={{
+                  value: experience.description,
+                  onChange: (e) => handleChange(e, index),
                 }}
-                value={experience.description}
               />
             </GridItem>
           </Grid>

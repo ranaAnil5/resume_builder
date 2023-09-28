@@ -1,10 +1,8 @@
 import {
   Center,
-  Heading,
   HStack,
   Grid,
   GridItem,
-  Textarea,
   Input,
   Image,
   Box,
@@ -14,6 +12,8 @@ import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import ImageClose from "./ImageClose";
+import FormTextArea from "./FormTextArea";
+import ScreenHeader from "./ScreenHeader";
 
 const PersonalDetails = () => {
   const { personal_detail, setPersonalDetail } = useContext(AppContext);
@@ -27,7 +27,7 @@ const PersonalDetails = () => {
 
   return (
     <>
-      <Heading mb={"40px"}>Personal Detail :</Heading>
+      <ScreenHeader title="Personal Details" />
       <Grid templateColumns={"repeat(2,1fr)"} rowGap={"6"} columnGap={"12"}>
         <GridItem colSpan={1}>
           <FormField
@@ -49,7 +49,7 @@ const PersonalDetails = () => {
             justifyContent={"center"}
           >
             <Box flexShrink={0}>
-              <BiSolidUserRectangle size={"40"} />
+              <BiSolidUserRectangle size={"40"} color="teal" />
             </Box>
 
             <label htmlFor="profileImage">
@@ -161,20 +161,15 @@ const PersonalDetails = () => {
         </GridItem>
 
         <GridItem colSpan={2}>
-          <FormField
+          <FormTextArea
             label="Personal Summary"
-            inputProps={{ display: "none" }}
-          />
-          <Textarea
-            w={"100%"}
-            h={"100px"}
-            p={"15px"}
-            name="personal_summary"
-            onChange={(e) => {
-              const keyName = e.target.name;
-              setPersonalDetail({ [keyName]: e.target.value });
+            textAreaProps={{
+              value: personal_detail.personal_summary,
+              onChange: (e) => {
+                const keyName = e.target.name;
+                setPersonalDetail({ [keyName]: e.target.value });
+              },
             }}
-            value={personal_detail.personal_summary}
           />
         </GridItem>
       </Grid>

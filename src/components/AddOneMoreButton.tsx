@@ -3,8 +3,8 @@ import { FiPlus } from "react-icons/fi";
 
 const AddOneMoreButton = ({ handleAdd }: { handleAdd: () => void }) => {
   return (
-    <Button onClick={handleAdd} color={"blue.600"}>
-      <FiPlus />
+    <Button onClick={handleAdd}>
+      <FiPlus color="white" />
       &nbsp; Add more
     </Button>
   );

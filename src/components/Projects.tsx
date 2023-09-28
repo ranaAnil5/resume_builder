@@ -1,18 +1,12 @@
-import {
-  Heading,
-  Grid,
-  GridItem,
-  Textarea,
-  Box,
-  Text,
-  HStack,
-} from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text, HStack } from "@chakra-ui/react";
 import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import AddOneMoreButton from "./AddOneMoreButton";
 import { Project } from "../App.type";
 import { RiDeleteBinLine } from "react-icons/ri";
+import FormTextArea from "./FormTextArea";
+import ScreenHeader from "./ScreenHeader";
 
 // const Projects = ({ num }: { num?: number }) => {
 const Projects = () => {
@@ -42,7 +36,7 @@ const Projects = () => {
 
   return (
     <>
-      <Heading mb={"40px"}>Project List :</Heading>
+      <ScreenHeader title="Projects" />
       {projects.map((project, index) => (
         <Box key={index}>
           <HStack gap="15px" alignItems={"center"} mb="20px">
@@ -80,14 +74,12 @@ const Projects = () => {
             </GridItem>
 
             <GridItem colSpan={2}>
-              <FormField label="Description" inputProps={{ display: "none" }} />
-              <Textarea
-                w={"100%"}
-                h={"100px"}
-                p={"15px"}
-                name="description"
-                onChange={(e) => handleChange(e, index)}
-                value={project.description}
+              <FormTextArea
+                label="Description"
+                textAreaProps={{
+                  value: project.description,
+                  onChange: (e) => handleChange(e, index),
+                }}
               />
             </GridItem>
           </Grid>

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { Box, HStack, Heading, Switch, Text, Tooltip } from "@chakra-ui/react";
+import { Box, HStack, Switch, Text, Tooltip } from "@chakra-ui/react";
 import PersonalDetails from "./components/PersonalDetails";
 import { StepperNav } from "./components/StepperNav";
 import { useContext } from "react";
@@ -11,6 +11,7 @@ import Skills from "./components/Skills";
 import Hobbies from "./components/Hobbies";
 import PreviewMode from "./components/PreviewMode";
 import Projects from "./components/Projects";
+import { RiInformationFill } from "react-icons/ri";
 
 const screens = [
   <PersonalDetails />,
@@ -28,19 +29,28 @@ function App() {
   return (
     <Box px="150px" py={"50px"}>
       <HStack mb={"10"} gap={"10"}>
-        <Text fontSize={"3xl"} fontWeight={"bold"}>
+        <Text
+          fontSize={"3xl"}
+          fontWeight={"bold"}
+          textDecoration={"underline"}
+          textDecorationThickness={"4px"}
+        >
           Preview Resume
         </Text>
         <Tooltip
           hasArrow
           isDisabled={dataToggler}
-          label="Editing mode is off for dummy data"
+          label={
+            <HStack>
+              <RiInformationFill />
+              <Text>Editing mode is off for mock data</Text>
+            </HStack>
+          }
           placement="top-start"
-          bg="red.600"
+          closeOnClick={false}
         >
           <Box>
             <Switch
-              colorScheme="teal"
               size="lg"
               onChange={() => {
                 dataToggler ? setPreview(!preview) : "";
@@ -54,12 +64,23 @@ function App() {
       {!preview ? (
         <HStack alignItems={"start"} gap={"125px"} w="100%">
           <Box>
-            <Heading mb={"30px"} textDecoration={"underline"} size={"lg"}>
+            <Text
+              mb={"30px"}
+              fontSize={"2xl"}
+              fontWeight={"bold"}
+              textDecoration={"underline"}
+              textDecorationThickness={"2px"}
+            >
               Form Index
-            </Heading>
+            </Text>
             <StepperNav />
           </Box>
-          <Box flexGrow={"1"}>
+          <Box
+            flexGrow={"1"}
+            bg={"blackAlpha.100"}
+            p="20px"
+            borderRadius={"5px"}
+          >
             {screens.map(
               (screen, i) => i === stepperIndex && <Box key={i}>{screen}</Box>
             )}

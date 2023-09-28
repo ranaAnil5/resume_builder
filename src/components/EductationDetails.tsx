@@ -1,12 +1,4 @@
-import {
-  Heading,
-  Grid,
-  GridItem,
-  Textarea,
-  HStack,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Text, Box } from "@chakra-ui/react";
 
 import FormField from "./FormField";
 import { useContext } from "react";
@@ -14,6 +6,8 @@ import AppContext from "../Context/AppContext";
 import { EducationalDetail } from "../App.type";
 import { RiDeleteBinLine } from "react-icons/ri";
 import AddOneMoreButton from "./AddOneMoreButton";
+import FormTextArea from "./FormTextArea";
+import ScreenHeader from "./ScreenHeader";
 
 const EducationalDetails = () => {
   const { educational_details, setEducationalDetails } = useContext(AppContext);
@@ -52,7 +46,7 @@ const EducationalDetails = () => {
 
   return (
     <>
-      <Heading mb={"40px"}>Educational Detail :</Heading>
+      <ScreenHeader title="Educational Details" />
       {educational_details.map(
         (educational_detail: EducationalDetail, index: number) => (
           <Box key={index}>
@@ -126,17 +120,12 @@ const EducationalDetails = () => {
               </GridItem>
 
               <GridItem colSpan={2}>
-                <FormField
+                <FormTextArea
                   label="Description"
-                  inputProps={{ display: "none" }}
-                />
-                <Textarea
-                  w={"100%"}
-                  h={"100px"}
-                  p={"15px"}
-                  name="description"
-                  onChange={(e) => handleChange(e, index)}
-                  value={educational_detail.description}
+                  textAreaProps={{
+                    value: educational_detail.description,
+                    onChange: (e) => handleChange(e, index),
+                  }}
                 />
               </GridItem>
             </Grid>

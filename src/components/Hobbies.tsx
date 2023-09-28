@@ -1,10 +1,11 @@
-import { Heading, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 import FormField from "./FormField";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import AddOneMoreButton from "./AddOneMoreButton";
+import ScreenHeader from "./ScreenHeader";
 
 const Hobbies = () => {
   const { hobbies, setHobbies } = useContext(AppContext);
@@ -30,7 +31,7 @@ const Hobbies = () => {
 
   return (
     <>
-      <Heading mb={"40px"}>Hobbies :</Heading>
+      <ScreenHeader title="Hobbies" />
       <VStack gap={"6"} w={"50%"} alignItems={"start"} mb="20px">
         {hobbies.map((hobbie, index) => (
           <FormField

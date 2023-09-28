@@ -1,8 +1,9 @@
 import jsPDF from "jspdf";
 import { useContext, useRef } from "react";
 import AppContext from "../../Context/AppContext";
-import { Box, Button, Grid, GridItem, Text, VStack } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text, VStack } from "@chakra-ui/react";
 import { EducationalDetail, Experience, Skill } from "../../App.type";
+import DownloadButton from "../../components/DownloadButton";
 
 const TemplateTwo = () => {
   const { personal_detail, educational_details, experiences, skills } =
@@ -29,9 +30,7 @@ const TemplateTwo = () => {
 
   return (
     <>
-      <Button mb={"30px"} onClick={handleDownload}>
-        Download PDF
-      </Button>
+      <DownloadButton handleDownload={handleDownload} />
 
       <Grid templateColumns="repeat(12,1fr)" ref={docRef} border={"2px solid"}>
         <GridItem colSpan={7} h="165px" bg={"black"} pl={"55px"}>
@@ -45,7 +44,7 @@ const TemplateTwo = () => {
           </VStack>
         </GridItem>
 
-        <GridItem colSpan={5} bg="teal" pl="35px">
+        <GridItem colSpan={5} bg="brand.700" pl="35px">
           <VStack justifyContent={"center"} alignItems={"start"} h="100%">
             <Text fontSize={"2xl"} fontWeight={"semibold"} color="white">
               {personal_detail.job_title}
@@ -53,7 +52,7 @@ const TemplateTwo = () => {
           </VStack>
         </GridItem>
 
-        <GridItem colSpan={7} h="55px" bg={"teal"} pl={"55px"}>
+        <GridItem colSpan={7} h="55px" bg={"brand.700"} pl={"55px"}>
           <VStack alignItems={"start"} h="100%" justifyContent={"center"}>
             <Text fontSize={"2xl"} fontWeight={"semibold"} color={"white"}>
               Profile
@@ -88,7 +87,7 @@ const TemplateTwo = () => {
           <Text>Country : {personal_detail.country}</Text>
         </GridItem>
 
-        <GridItem colSpan={7} h="55px" bg={"teal"} pl={"55px"}>
+        <GridItem colSpan={7} h="55px" bg={"brand.700"} pl={"55px"}>
           <VStack alignItems={"start"} h="100%" justifyContent={"center"}>
             <Text fontSize={"2xl"} fontWeight={"semibold"} color={"white"}>
               Experience
@@ -121,7 +120,7 @@ const TemplateTwo = () => {
 
         <GridItem colSpan={5} bg="silver" h="165px" pl="35px" pt="15px">
           {skills.map((skill: Skill, index: number) => (
-            <Text key={index} color="teal">
+            <Text key={index} color="brand.700">
               - {skill.name}
             </Text>
           ))}
